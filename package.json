@@ -10,7 +10,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "NODE_OPTIONS=--openssl-legacy-provider ng build",
+    "build": "set NODE_OPTIONS=--openssl-legacy-provider && ng build",
     "build:prod": "ng build --configuration production"
   },
   "engines": {
