@@ -20,28 +20,23 @@ export class LoginService {
 
   public loginUserFromRemote(user: User) {
     return this._http.post<any>(`${NAV_URL}/loginuser`, user).pipe(
-      map(
-        data => {
-          sessionStorage.setItem('USER', user.email);
-          sessionStorage.setItem('ROLE', 'USER');
-          sessionStorage.setItem('TOKEN', `Bearer ${data.token}`);
-          return data;
-        }
-      )
+      map(data => {
+        sessionStorage.setItem('USER', user.email);
+        sessionStorage.setItem('ROLE', 'USER');
+        // ❌ REMOVE TOKEN LINE
+        return data;
+      })
     );
   }
 
   public loginDoctorFromRemote(doctor: Doctor) {
-    console.log(doctor);
     return this._http.post<any>(`${NAV_URL}/logindoctor`, doctor).pipe(
-      map(
-        data => {
-          sessionStorage.setItem('USER', doctor.email);
-          sessionStorage.setItem('ROLE', 'DOCTOR');
-          sessionStorage.setItem('TOKEN', `Bearer ${data.token}`);
-          return data;
-        }
-      )
+      map(data => {
+        sessionStorage.setItem('USER', doctor.email);
+        sessionStorage.setItem('ROLE', 'DOCTOR');
+        // ❌ REMOVE TOKEN LINE
+        return data;
+      })
     );
   }
 
@@ -75,7 +70,7 @@ export class LoginService {
   getAuthenticatedToken() {
     return sessionStorage.getItem('TOKEN');
   }
- 
+
   getAuthenticatedUser() {
     return sessionStorage.getItem('USER');
   }

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiURL: 'https://hms-backend-m7ol.onrender.com'
+  apiURL: 'http://localhost:8080'
 };
 
 

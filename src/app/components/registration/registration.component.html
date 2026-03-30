@@ -57,12 +57,16 @@
       </div>
 
       <div class="panel-header">
-        <h2>{{ activeTab === 'user' ? 'User Registration' : 'Doctor Registration' }}</h2>
+        <h2>
+          {{
+            activeTab === "user" ? "User Registration" : "Doctor Registration"
+          }}
+        </h2>
         <p>
           {{
-            activeTab === 'user'
-              ? 'Create your patient profile and access hospital services.'
-              : 'Join the platform and manage your doctor profile professionally.'
+            activeTab === "user"
+              ? "Create your patient profile and access hospital services."
+              : "Join the platform and manage your doctor profile professionally."
           }}
         </p>
       </div>
@@ -92,7 +96,10 @@
               #username="ngModel"
               [class.is-invalid]="username.invalid && username.touched"
             />
-            <small class="error-text" *ngIf="username.invalid && username.touched">
+            <small
+              class="error-text"
+              *ngIf="username.invalid && username.touched"
+            >
               required field
             </small>
           </div>
@@ -106,13 +113,16 @@
               name="useremail"
               [(ngModel)]="user.email"
               required
-              pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"
               #useremail="ngModel"
               [class.is-invalid]="useremail.invalid && useremail.touched"
             />
             <div *ngIf="useremail.invalid && useremail.touched">
-              <small class="error-text" *ngIf="useremail.errors?.required">required field</small>
-              <small class="error-text" *ngIf="useremail.errors?.pattern">Invalid email Id</small>
+              <small class="error-text" *ngIf="useremail.errors?.required"
+                >required field</small
+              >
+              <small class="error-text" *ngIf="useremail.errors?.pattern"
+                >Invalid email Id</small
+              >
             </div>
           </div>
 
@@ -128,7 +138,10 @@
               #usergender="ngModel"
               [class.is-invalid]="usergender.invalid && usergender.touched"
             />
-            <small class="error-text" *ngIf="usergender.invalid && usergender.touched">
+            <small
+              class="error-text"
+              *ngIf="usergender.invalid && usergender.touched"
+            >
               required field
             </small>
           </div>
@@ -145,7 +158,10 @@
               #usermobile="ngModel"
               [class.is-invalid]="usermobile.invalid && usermobile.touched"
             />
-            <small class="error-text" *ngIf="usermobile.invalid && usermobile.touched">
+            <small
+              class="error-text"
+              *ngIf="usermobile.invalid && usermobile.touched"
+            >
               required field
             </small>
           </div>
@@ -162,7 +178,10 @@
               #userage="ngModel"
               [class.is-invalid]="userage.invalid && userage.touched"
             />
-            <small class="error-text" *ngIf="userage.invalid && userage.touched">
+            <small
+              class="error-text"
+              *ngIf="userage.invalid && userage.touched"
+            >
               required field
             </small>
           </div>
@@ -179,7 +198,10 @@
               #useraddress="ngModel"
               [class.is-invalid]="useraddress.invalid && useraddress.touched"
             />
-            <small class="error-text" *ngIf="useraddress.invalid && useraddress.touched">
+            <small
+              class="error-text"
+              *ngIf="useraddress.invalid && useraddress.touched"
+            >
               required field
             </small>
           </div>
@@ -195,18 +217,30 @@
                 [(ngModel)]="user.password"
                 required
                 #userpassword="ngModel"
-                [class.is-invalid]="userpassword.invalid && userpassword.touched"
+                [class.is-invalid]="
+                  userpassword.invalid && userpassword.touched
+                "
               />
-              <button type="button" class="eye-btn" (click)="toggleUserPassword()">
-                <i class="fa" [ngClass]="showUserPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+              <button
+                type="button"
+                class="eye-btn"
+                (click)="toggleUserPassword()"
+              >
+                <i
+                  class="fa"
+                  [ngClass]="showUserPassword ? 'fa-eye-slash' : 'fa-eye'"
+                ></i>
               </button>
             </div>
-            <small class="error-text" *ngIf="userpassword.invalid && userpassword.touched">
+            <small
+              class="error-text"
+              *ngIf="userpassword.invalid && userpassword.touched"
+            >
               required field
             </small>
             <small class="hint-text">
-              atleast one uppercase, numeric digit, lowercase, special character,
-              length of 6-20
+              atleast one uppercase, numeric digit, lowercase, special
+              character, length of 6-20
             </small>
           </div>
 
@@ -222,17 +256,29 @@
                 required
                 #userConfirmPasswordRef="ngModel"
                 [class.is-invalid]="
-                  (userConfirmPasswordRef.invalid && userConfirmPasswordRef.touched) ||
+                  (userConfirmPasswordRef.invalid &&
+                    userConfirmPasswordRef.touched) ||
                   isUserPasswordMismatch()
                 "
               />
-              <button type="button" class="eye-btn" (click)="toggleUserConfirmPassword()">
-                <i class="fa" [ngClass]="showUserConfirmPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+              <button
+                type="button"
+                class="eye-btn"
+                (click)="toggleUserConfirmPassword()"
+              >
+                <i
+                  class="fa"
+                  [ngClass]="
+                    showUserConfirmPassword ? 'fa-eye-slash' : 'fa-eye'
+                  "
+                ></i>
               </button>
             </div>
             <small
               class="error-text"
-              *ngIf="userConfirmPasswordRef.invalid && userConfirmPasswordRef.touched"
+              *ngIf="
+                userConfirmPasswordRef.invalid && userConfirmPasswordRef.touched
+              "
             >
               required field
             </small>
@@ -252,12 +298,19 @@
         </label>
 
         <button
-          [disabled]="userform.form.invalid || isUserPasswordMismatch() || !userAcceptedTerms || isUserSubmitting"
+          [disabled]="
+            userform.form.invalid ||
+            isUserPasswordMismatch() ||
+            !userAcceptedTerms ||
+            isUserSubmitting
+          "
           type="submit"
           class="submit-btn"
         >
           <span *ngIf="!isUserSubmitting">Register User</span>
-          <span *ngIf="isUserSubmitting"><i class="fa fa-spinner fa-spin"></i> Registering...</span>
+          <span *ngIf="isUserSubmitting"
+            ><i class="fa fa-spinner fa-spin"></i> Registering...</span
+          >
         </button>
       </form>
 
@@ -281,7 +334,10 @@
               #doctorname="ngModel"
               [class.is-invalid]="doctorname.invalid && doctorname.touched"
             />
-            <small class="error-text" *ngIf="doctorname.invalid && doctorname.touched">
+            <small
+              class="error-text"
+              *ngIf="doctorname.invalid && doctorname.touched"
+            >
               required field
             </small>
           </div>
@@ -295,13 +351,16 @@
               name="doctoremail"
               [(ngModel)]="doctor.email"
               required
-              pattern="^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$"
               #doctoremail="ngModel"
               [class.is-invalid]="doctoremail.invalid && doctoremail.touched"
             />
             <div *ngIf="doctoremail.invalid && doctoremail.touched">
-              <small class="error-text" *ngIf="doctoremail.errors?.required">required field</small>
-              <small class="error-text" *ngIf="doctoremail.errors?.pattern">Invalid email Id</small>
+              <small class="error-text" *ngIf="doctoremail.errors?.required"
+                >required field</small
+              >
+              <small class="error-text" *ngIf="doctoremail.errors?.pattern"
+                >Invalid email Id</small
+              >
             </div>
           </div>
 
@@ -317,7 +376,10 @@
               #doctorgender="ngModel"
               [class.is-invalid]="doctorgender.invalid && doctorgender.touched"
             />
-            <small class="error-text" *ngIf="doctorgender.invalid && doctorgender.touched">
+            <small
+              class="error-text"
+              *ngIf="doctorgender.invalid && doctorgender.touched"
+            >
               required field
             </small>
           </div>
@@ -334,7 +396,10 @@
               #doctormobile="ngModel"
               [class.is-invalid]="doctormobile.invalid && doctormobile.touched"
             />
-            <small class="error-text" *ngIf="doctormobile.invalid && doctormobile.touched">
+            <small
+              class="error-text"
+              *ngIf="doctormobile.invalid && doctormobile.touched"
+            >
               required field
             </small>
           </div>
@@ -349,9 +414,14 @@
               [(ngModel)]="doctor.specialization"
               required
               #specialization="ngModel"
-              [class.is-invalid]="specialization.invalid && specialization.touched"
+              [class.is-invalid]="
+                specialization.invalid && specialization.touched
+              "
             />
-            <small class="error-text" *ngIf="specialization.invalid && specialization.touched">
+            <small
+              class="error-text"
+              *ngIf="specialization.invalid && specialization.touched"
+            >
               required field
             </small>
           </div>
@@ -368,7 +438,10 @@
               #experience="ngModel"
               [class.is-invalid]="experience.invalid && experience.touched"
             />
-            <small class="error-text" *ngIf="experience.invalid && experience.touched">
+            <small
+              class="error-text"
+              *ngIf="experience.invalid && experience.touched"
+            >
               required field
             </small>
           </div>
@@ -383,9 +456,14 @@
               [(ngModel)]="doctor.previoushospital"
               required
               #previoushospital="ngModel"
-              [class.is-invalid]="previoushospital.invalid && previoushospital.touched"
+              [class.is-invalid]="
+                previoushospital.invalid && previoushospital.touched
+              "
             />
-            <small class="error-text" *ngIf="previoushospital.invalid && previoushospital.touched">
+            <small
+              class="error-text"
+              *ngIf="previoushospital.invalid && previoushospital.touched"
+            >
               required field
             </small>
           </div>
@@ -400,9 +478,14 @@
               [(ngModel)]="doctor.address"
               required
               #doctoraddress="ngModel"
-              [class.is-invalid]="doctoraddress.invalid && doctoraddress.touched"
+              [class.is-invalid]="
+                doctoraddress.invalid && doctoraddress.touched
+              "
             />
-            <small class="error-text" *ngIf="doctoraddress.invalid && doctoraddress.touched">
+            <small
+              class="error-text"
+              *ngIf="doctoraddress.invalid && doctoraddress.touched"
+            >
               required field
             </small>
           </div>
@@ -418,18 +501,30 @@
                 [(ngModel)]="doctor.password"
                 required
                 #doctorpassword="ngModel"
-                [class.is-invalid]="doctorpassword.invalid && doctorpassword.touched"
+                [class.is-invalid]="
+                  doctorpassword.invalid && doctorpassword.touched
+                "
               />
-              <button type="button" class="eye-btn" (click)="toggleDoctorPassword()">
-                <i class="fa" [ngClass]="showDoctorPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+              <button
+                type="button"
+                class="eye-btn"
+                (click)="toggleDoctorPassword()"
+              >
+                <i
+                  class="fa"
+                  [ngClass]="showDoctorPassword ? 'fa-eye-slash' : 'fa-eye'"
+                ></i>
               </button>
             </div>
-            <small class="error-text" *ngIf="doctorpassword.invalid && doctorpassword.touched">
+            <small
+              class="error-text"
+              *ngIf="doctorpassword.invalid && doctorpassword.touched"
+            >
               required field
             </small>
             <small class="hint-text">
-              atleast one uppercase, numeric digit, lowercase, special character,
-              length of 6-20
+              atleast one uppercase, numeric digit, lowercase, special
+              character, length of 6-20
             </small>
           </div>
 
@@ -445,17 +540,30 @@
                 required
                 #doctorConfirmPasswordRef="ngModel"
                 [class.is-invalid]="
-                  (doctorConfirmPasswordRef.invalid && doctorConfirmPasswordRef.touched) ||
+                  (doctorConfirmPasswordRef.invalid &&
+                    doctorConfirmPasswordRef.touched) ||
                   isDoctorPasswordMismatch()
                 "
               />
-              <button type="button" class="eye-btn" (click)="toggleDoctorConfirmPassword()">
-                <i class="fa" [ngClass]="showDoctorConfirmPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+              <button
+                type="button"
+                class="eye-btn"
+                (click)="toggleDoctorConfirmPassword()"
+              >
+                <i
+                  class="fa"
+                  [ngClass]="
+                    showDoctorConfirmPassword ? 'fa-eye-slash' : 'fa-eye'
+                  "
+                ></i>
               </button>
             </div>
             <small
               class="error-text"
-              *ngIf="doctorConfirmPasswordRef.invalid && doctorConfirmPasswordRef.touched"
+              *ngIf="
+                doctorConfirmPasswordRef.invalid &&
+                doctorConfirmPasswordRef.touched
+              "
             >
               required field
             </small>
@@ -475,12 +583,19 @@
         </label>
 
         <button
-          [disabled]="doctorform.form.invalid || isDoctorPasswordMismatch() || !doctorAcceptedTerms || isDoctorSubmitting"
+          [disabled]="
+            doctorform.form.invalid ||
+            isDoctorPasswordMismatch() ||
+            !doctorAcceptedTerms ||
+            isDoctorSubmitting
+          "
           type="submit"
           class="submit-btn"
         >
           <span *ngIf="!isDoctorSubmitting">Register Doctor</span>
-          <span *ngIf="isDoctorSubmitting"><i class="fa fa-spinner fa-spin"></i> Registering...</span>
+          <span *ngIf="isDoctorSubmitting"
+            ><i class="fa fa-spinner fa-spin"></i> Registering...</span
+          >
         </button>
       </form>
     </div>

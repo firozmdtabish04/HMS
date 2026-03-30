@@ -68,22 +68,23 @@ export class LoginComponent implements OnInit {
         sessionStorage.setItem('ROLE', 'user');
         sessionStorage.setItem('username', userName);
         sessionStorage.setItem('name', userName);
-        sessionStorage.setItem('gender', data?.gender || 'male');
-
-        if (this.rememberMe)
-        {
-          localStorage.setItem('rememberedEmail', this.email);
-        }
-        else
-        {
-          localStorage.removeItem('rememberedEmail');
-        }
 
         this.loading = false;
         this._router.navigate(['/userdashboard']);
       },
-      () => {
-        this.tryDoctorLogin();
+
+      // ✅ THIS IS WHERE YOU PUT IT
+      (error) => {
+        console.log('User login error:', error);
+
+        if (error.status === 401)
+        {
+          this.tryDoctorLogin(); // fallback
+        } else
+        {
+          this.msg = "Server error";
+          this.loading = false;
+        }
       }
     );
   }
